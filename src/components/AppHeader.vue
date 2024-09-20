@@ -1,21 +1,25 @@
 <script>
-import AppHeaderSearch from "./AppHeaderSearch.vue";
+import { store } from "../store.js"
 
 export default {
     data() {
         return {
-
+            store,
         }
     },
-    components: {
-        AppHeaderSearch
+    methods: {
+        sendAMessage(message) {
+            console.log(message)
+        }
     }
 }
 </script>
 
 <template>
-    <h2>AppHeader</h2>
-    <AppHeaderSearch />
+    <section id="search">
+        <input type="text" v-model="store.querySearch" @keyup.enter="$emit(search)">
+        <button @click="$emit('search')">Cerca</button>
+    </section>
 </template>
 
 <style lang="scss" scoped></style>
