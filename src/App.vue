@@ -26,7 +26,8 @@ export default {
         }
       })
         .then((response) => {
-          console.log(response)
+          store.cardItems = response.data.results;
+          console.table(response.data.results)
         })
     }
   }

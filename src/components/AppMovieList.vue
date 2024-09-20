@@ -1,10 +1,12 @@
 <script>
 import AppMovieListCard from "./AppMovieListCard.vue";
 
+import { store } from "../store.js"
+
 export default {
     data() {
         return {
-
+            store,
         }
     },
     components: {
@@ -14,8 +16,9 @@ export default {
 </script>
 
 <template>
-    <h2>AppMovieList</h2>
-    <AppMovieListCard />
+    <ul>
+        <AppMovieListCard v-for="card in store.cardItems" :key="card.id" :cardObj="card" />
+    </ul>
 </template>
 
 <style lang="scss" scoped></style>

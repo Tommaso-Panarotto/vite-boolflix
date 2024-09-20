@@ -17,7 +17,7 @@ export default {
 
 <template>
     <section id="search">
-        <input type="text" v-model="store.querySearch" @keyup.enter="$emit(search)">
+        <input type="text" v-model="store.querySearch" @keyup.enter="$emit('search')">
         <button @click="$emit('search')">Cerca</button>
     </section>
 </template>
