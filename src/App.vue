@@ -10,7 +10,8 @@ export default {
     return {
       store,
       ApiUrl: "https://api.themoviedb.org/3/search/movie?",
-      ApiKey: "9b46b3d0d560dce29295098155e7ddae"
+      ApiKey: "9b46b3d0d560dce29295098155e7ddae",
+      language: "it-IT"
     }
   },
   components: {
@@ -22,7 +23,8 @@ export default {
       axios.get(this.ApiUrl, {
         params: {
           api_key: this.ApiKey,
-          query: store.querySearch
+          query: store.querySearch,
+          language: this.language,
         }
       })
         .then((response) => {

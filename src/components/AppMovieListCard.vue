@@ -1,10 +1,8 @@
 <script>
-import { store } from "../store.js"
-
 export default {
     data() {
         return {
-            store
+
         }
     },
     props: {
@@ -17,7 +15,12 @@ export default {
 </script>
 
 <template>
-    <li>{{ cardObj.title }}</li>
+    <li>
+        <p>Titolo: {{ cardObj.title }}</p>
+        <p>Titolo originale: {{ cardObj.original_title }}</p>
+        <p>Lingua: {{ cardObj.original_language }}</p>
+        <p>Voto: {{ cardObj.vote_average }}</p>
+    </li>
 </template>
 
 <style lang="scss" scoped></style>
