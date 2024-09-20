@@ -1,8 +1,15 @@
 <script>
+import { store } from "../store.js"
+
 export default {
     data() {
         return {
-
+            store,
+        }
+    },
+    methods: {
+        sendAMessage(message) {
+            console.log(message)
         }
     }
 }
@@ -10,7 +17,8 @@ export default {
 
 <template>
     <section id="search">
-        <h2>APPHeaderSearch</h2>
+        <input type="text" v-model="store.querySearch" @keyup.enter="sendAMessage(store.querySearch)">
+        <button @click="sendAMessage(store.querySearch)">Cerca</button>
     </section>
 </template>
 
