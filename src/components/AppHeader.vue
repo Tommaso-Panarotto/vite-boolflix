@@ -6,20 +6,49 @@ export default {
         return {
             store,
         }
-    },
-    methods: {
-        sendAMessage(message) {
-            console.log(message)
-        }
     }
 }
 </script>
 
 <template>
-    <section id="search">
-        <input type="text" v-model="store.querySearch" @keyup.enter="$emit('search')">
-        <button @click="$emit('search')">Cerca</button>
-    </section>
+    <header id="search" class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <h1>BOOLFLIX</h1>
+            </a>
+            <form class="d-flex">
+                <button type="button" @click="$emit('search')"><font-awesome-icon
+                        :icon="['fas', 'magnifying-glass']" /></button>
+                <input type="text" placeholder="Cerca Film e Serie Tv" v-model="store.querySearch"
+                    @keyup.enter="$emit('search')">
+            </form>
+        </div>
+    </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+    height: 90px;
+    background-color: #141414;
+
+    h1 {
+        color: red;
+    }
+
+    input,
+    button {
+        padding: 5px 10px;
+        color: white;
+        background-color: black;
+        border: 2px solid grey;
+    }
+
+    input {
+        border-left: 0;
+    }
+
+    button {
+        border-right: 0;
+    }
+}
+</style>
