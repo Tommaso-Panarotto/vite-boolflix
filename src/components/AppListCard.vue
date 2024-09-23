@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <li>
+    <div class="col">
         <p>Titolo: {{ cardObj.title }} {{ cardObj.name }}</p>
         <p>Titolo originale: {{ cardObj.original_title }} {{ cardObj.original_name }}</p>
         <p class="image">Lingua: <img :src="getImageUrl(cardObj.original_language)" :alt="cardObj.original_language">
@@ -32,7 +32,13 @@ export default {
             <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" v-for="n in vote" />
             <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="n in (5 - vote)" />
         </p>
-    </li>
+    </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.col {
+    border: 2px solid white;
+    height: 600px;
+    flex-basis: calc(100% / 4);
+}
+</style>

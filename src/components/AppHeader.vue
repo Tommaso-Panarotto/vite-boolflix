@@ -16,12 +16,12 @@ export default {
             <a class="navbar-brand" href="#">
                 <h1>BOOLFLIX</h1>
             </a>
-            <form class="d-flex">
+            <div class="d-flex">
                 <button type="button" @click="$emit('search')"><font-awesome-icon
                         :icon="['fas', 'magnifying-glass']" /></button>
                 <input type="text" placeholder="Cerca Film e Serie Tv" v-model="store.querySearch"
                     @keyup.enter="$emit('search')">
-            </form>
+            </div>
         </div>
     </header>
 </template>

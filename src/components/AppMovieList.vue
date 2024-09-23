@@ -16,10 +16,7 @@ export default {
 </script>
 
 <template>
-    <h2>FILM</h2>
-    <ul>
-        <AppMovieListCard v-for="card in store.cardItemsMovie" :key="card.id" :cardObj="card" />
-    </ul>
+    <AppMovieListCard v-for="card in store.cardItemsMovie" :key="card.id" :cardObj="card" />
 </template>
 
 <style lang="scss" scoped></style>
