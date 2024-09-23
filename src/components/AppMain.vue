@@ -26,11 +26,11 @@ export default {
     <main v-else>
         <div class="container-fluid">
             <h2>FILM</h2>
-            <div class="row">
+            <div class=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
                 <AppMovieList />
             </div>
             <h2>SERIE TV</h2>
-            <div class="row">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
                 <AppTvList />
             </div>
         </div>
@@ -41,5 +41,14 @@ export default {
 main {
     color: white;
     text-align: center;
+
+    h2 {
+        margin-top: 30px;
+    }
+
+    .row {
+        justify-content: center;
+        margin-top: 20px;
+    }
 }
 </style>

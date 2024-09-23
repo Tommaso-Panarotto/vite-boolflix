@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 header {
-    height: 90px;
+    min-height: 90px;
     background-color: #141414;
 
     h1 {
