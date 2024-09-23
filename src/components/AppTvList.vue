@@ -1,5 +1,5 @@
 <script>
-import AppMovieListCard from "./AppListCard.vue";
+import AppTvListCard from "./AppListCard.vue";
 
 import { store } from "../store.js"
 
@@ -10,15 +10,15 @@ export default {
         }
     },
     components: {
-        AppMovieListCard
+        AppTvListCard
     }
 }
 </script>
 
 <template>
-    <h2>FILM</h2>
+    <h2>SERIE TV</h2>
     <ul>
-        <AppMovieListCard v-for="card in store.cardItemsMovie" :key="card.id" :cardObj="card" />
+        <AppTvListCard v-for="card in store.cardItemsTv" :key="card.id" :cardObj="card" />
     </ul>
 </template>
 

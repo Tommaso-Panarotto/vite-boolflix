@@ -1,5 +1,6 @@
 <script>
 import AppMovieList from "./AppMovieList.vue";
+import AppTvList from "./AppTvList.vue";
 
 export default {
     data() {
@@ -8,14 +9,15 @@ export default {
         }
     },
     components: {
-        AppMovieList
+        AppMovieList,
+        AppTvList
     }
 }
 </script>
 
 <template>
-    <h2>AppMain</h2>
     <AppMovieList />
+    <AppTvList />
 </template>
 
 <style lang="scss" scoped></style>
