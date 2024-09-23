@@ -9,8 +9,8 @@ export default {
   data() {
     return {
       store,
-      apiUrlMovie: "https://api.themoviedb.org/3/search/movie?",
-      apiUrlTv: "https://api.themoviedb.org/3/search/tv?",
+      apiUrlMovie: "https://api.themoviedb.org/3/search/movie",
+      apiUrlTv: "https://api.themoviedb.org/3/search/tv",
       ApiKey: "9b46b3d0d560dce29295098155e7ddae",
       language: "it-IT"
     }
