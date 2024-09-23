@@ -26,17 +26,23 @@ export default {
 <template>
     <div class="col overflow-y-auto">
         <div class="card">
-            <img :src="(imageUrl + cardObj.poster_path)" :alt="cardObj.title || cardObj.name" class="d-block">
+            <img :src="(imageUrl + cardObj.poster_path)" :alt="cardObj.title || cardObj.name" class="poster d-block">
             <div class="card-body d-none">
-                <p><span>Titolo: </span>{{ cardObj.title }} {{ cardObj.name }}</p>
-                <p><span>Titolo originale:</span> {{ cardObj.original_title }} {{ cardObj.original_name }}</p>
-                <div><span>Lingua:</span>{{ cardObj.original_language }}<img
-                        :src="getFlagUrl(cardObj.original_language)" alt="top"></div>
-                <p v-bind="getVote(cardObj.vote_average)"> <span>Voto:</span>
-                    <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" v-for="n in vote" />
-                    <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="n in (5 - vote)" />
-                </p>
-                <p><span>Overview:</span> {{ cardObj.overview }}</p>
+                <ul>
+                    <li><span>Titolo: </span>
+                        <h3>{{ cardObj.title }} {{ cardObj.name }}</h3>
+                    </li>
+                    <li><span>Titolo originale:</span>
+                        <h4>{{ cardObj.original_title }} {{ cardObj.original_name }}</h4>
+                    </li>
+                    <div><span>Lingua:</span> <img class=" flag" :src="getFlagUrl(cardObj.original_language)"
+                            :alt="cardObj.original_language"></div>
+                    <li v-bind="getVote(cardObj.vote_average)"> <span>Voto:</span>
+                        <font-awesome-icon :icon="['fas', 'star']" style="color: #FFD43B;" v-for="n in vote" />
+                        <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="n in (5 - vote)" />
+                    </li>
+                    <li class="overview"><span>Overview:</span> {{ cardObj.overview }}</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -45,18 +51,17 @@ export default {
 <style lang="scss" scoped>
 .col {
     border: 0;
-    max-height: 600px;
+    max-width: 420px;
 
-    .flag {
-        height: 15px;
-        width: 25px;
+    li {
+        margin: 25px 0;
     }
 
     &:hover .card-body {
         display: block !important;
     }
 
-    &:hover img {
+    &:hover .poster {
         display: none !important;
     }
 
@@ -67,6 +72,10 @@ export default {
 
         span {
             font-weight: bold;
+        }
+
+        .card-body {
+            max-height: 210px;
         }
     }
 }

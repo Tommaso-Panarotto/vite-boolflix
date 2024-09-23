@@ -26,11 +26,11 @@ export default {
     <main v-else>
         <div class="container-fluid">
             <h2>FILM</h2>
-            <div class=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
+            <div class=" row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
                 <AppMovieList />
             </div>
             <h2>SERIE TV</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
                 <AppTvList />
             </div>
         </div>
