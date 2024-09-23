@@ -9,7 +9,8 @@ export default {
   data() {
     return {
       store,
-      ApiUrl: "https://api.themoviedb.org/3/search/movie?",
+      apiUrlMovie: "https://api.themoviedb.org/3/search/movie?",
+      apiUrlTv: "https://api.themoviedb.org/3/search/tv?",
       ApiKey: "9b46b3d0d560dce29295098155e7ddae",
       language: "it-IT"
     }
@@ -20,7 +21,7 @@ export default {
   },
   methods: {
     search() {
-      axios.get(this.ApiUrl, {
+      axios.get(this.apiUrlMovie, {
         params: {
           api_key: this.ApiKey,
           query: store.querySearch,
@@ -28,7 +29,18 @@ export default {
         }
       })
         .then((response) => {
-          store.cardItems = response.data.results;
+          store.cardItemsMovie = response.data.results;
+          console.table(response.data.results)
+        })
+      axios.get(this.apiUrlTv, {
+        params: {
+          api_key: this.ApiKey,
+          language: this.language,
+          query: store.querySearch,
+        }
+      })
+        .then((response) => {
+          store.cardItemsTv = response.data.results;
           console.table(response.data.results)
         })
     }
