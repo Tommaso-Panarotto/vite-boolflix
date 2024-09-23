@@ -43,6 +43,9 @@ export default {
           store.cardItemsTv = response.data.results;
           console.table(response.data.results)
         })
+        .finally(() => {
+          store.querySearch = "";
+        })
     }
   }
 }
