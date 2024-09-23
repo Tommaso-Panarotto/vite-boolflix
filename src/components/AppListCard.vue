@@ -25,13 +25,12 @@ export default {
         <p>Titolo originale: {{ cardObj.original_title }} {{ cardObj.original_name }}</p>
         <p class="image">Lingua: <img :src="getImageUrl(cardObj.original_language)" :alt="cardObj.original_language">
         </p>
-        <p>Voto: {{ cardObj.vote_average }}</p>
+        <p>Voto: {{ Math.ceil(cardObj.vote_average / 2) }}</p>
     </li>
 </template>
 
 <style lang="scss" scoped>
 .image {
     background-color: gray;
-
 }
 </style>
