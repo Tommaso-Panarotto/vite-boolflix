@@ -1,9 +1,17 @@
 <script>
+import { store } from "../store.js";
+import axios from 'axios';
+
+
 export default {
     data() {
         return {
+            store,
             vote: 0,
             imageUrl: "https://image.tmdb.org/t/p/w342",
+            castApi: "https://api.themoviedb.org/3/movie/383498/credits",
+            castActhors: [],
+            visibleCast: false,
         }
     },
     props: {
@@ -18,6 +26,25 @@ export default {
         },
         getVote(number) {
             this.vote = Math.ceil(number / 2)
+        },
+        getCast(id) {
+            axios.get(`https://api.themoviedb.org/3/movie/${id.toString()}/credits`, {
+                params: {
+                    api_key: store.ApiKey,
+                }
+            })
+                .then((response) => {
+                    for (let i = 0; i < 5; i++) {
+                        this.castActhors.push(response.data.cast[i].name)
+                    }
+                })
+        },
+        showCast() {
+            if (this.visibleCast === false) {
+                this.visibleCast = true
+            } else {
+                this.visibleCast = false
+            }
         }
     }
 } 
@@ -26,9 +53,11 @@ export default {
 <template>
     <div class="col overflow-y-auto">
         <div class="card">
-            <img :src="(imageUrl + cardObj.poster_path)" :alt="cardObj.title || cardObj.name" class="poster d-block">
-            <div class="card-body d-none">
+            <img :src="(imageUrl + cardObj.poster_path)" :alt="cardObj.title || cardObj.name" class="poster">
+            <div class="card-body ds-none" v-show="visibleCast === false" :class="(visibleCast) ? 'ds-none' : ''">
                 <ul>
+                    <li><font-awesome-icon class="fs-2 cast" :icon="['fas', 'user-secret']" @click="showCast()" />
+                    </li>
                     <li><span>Titolo: </span>
                         <h3>{{ cardObj.title }} {{ cardObj.name }}</h3>
                     </li>
@@ -42,6 +71,12 @@ export default {
                         <font-awesome-icon :icon="['far', 'star']" style="color: #FFD43B;" v-for="n in (5 - vote)" />
                     </li>
                     <li class="overview"><span>Overview:</span> {{ cardObj.overview }}</li>
+                </ul>
+            </div>
+            <div v-bind="getCast(cardObj.id)" :class="(visibleCast) ? '' : 'ds-none'" @mouseleave="showCast()">
+                <h3>CAST</h3>
+                <ul>
+                    <li v-for="n in 5">{{ castActhors[n] }}</li>
                 </ul>
             </div>
         </div>
@@ -58,11 +93,11 @@ export default {
     }
 
     &:hover .card-body {
-        display: block !important;
+        display: block;
     }
 
     &:hover .poster {
-        display: none !important;
+        display: none;
     }
 
     .card {
@@ -77,6 +112,10 @@ export default {
         .card-body {
             max-height: 210px;
         }
+    }
+
+    .cast {
+        cursor: pointer;
     }
 }
 </style>

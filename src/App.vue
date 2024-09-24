@@ -11,7 +11,6 @@ export default {
       store,
       apiUrlMovie: "https://api.themoviedb.org/3/search/movie",
       apiUrlTv: "https://api.themoviedb.org/3/search/tv",
-      ApiKey: "9b46b3d0d560dce29295098155e7ddae",
       language: "it-IT"
     }
   },
@@ -23,7 +22,7 @@ export default {
     search() {
       axios.get(this.apiUrlMovie, {
         params: {
-          api_key: this.ApiKey,
+          api_key: store.ApiKey,
           query: store.querySearch,
           language: this.language,
         }
@@ -34,7 +33,7 @@ export default {
         })
       axios.get(this.apiUrlTv, {
         params: {
-          api_key: this.ApiKey,
+          api_key: store.ApiKey,
           language: this.language,
           query: store.querySearch,
         }
